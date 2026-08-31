@@ -1,26 +1,422 @@
 @import "tailwindcss";
 
+/* ================================================================== */
+/* Design Tokens                                                        */
+/* ================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary:  #0c0c10;
+  --bg-surface:  #13131a;
+  --bg-elevated: #1a1a24;
+  --bg-border:   #252530;
+
+  /* Accent — restrained indigo */
+  --accent:        #6e5ff0;
+  --accent-light:  #8b7ef8;
+  --accent-muted:  rgba(110, 95, 240, 0.12);
+  --accent-border: rgba(110, 95, 240, 0.3);
+
+  /* Text */
+  --text-primary:   #eeedf8;
+  --text-secondary: #9896b0;
+  --text-muted:     #5c5a72;
+  --text-accent:    var(--accent-light);
+
+  /* Semantic aliases */
+  --background: var(--bg-primary);
+  --foreground:  var(--text-primary);
+
+  /* Spacing */
+  --nav-height: 3.75rem;
 }
 
+/* ================================================================== */
+/* Tailwind v4 theme registration                                       */
+/* ================================================================== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-accent:        var(--accent);
+  --color-accent-light:  var(--accent-light);
+  --color-accent-muted:  var(--accent-muted);
+  --color-surface:       var(--bg-surface);
+  --color-elevated:      var(--bg-elevated);
+  --color-border:        var(--bg-border);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:    var(--text-muted);
+
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ================================================================== */
+/* Base Reset                                                           */
+/* ================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor scrolling by nav height */
+  scroll-padding-top: var(--nav-height);
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ================================================================== */
+/* Layout Utilities                                                     */
+/* ================================================================== */
+
+/* Constrained content container */
+.container-page {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* Standard section vertical spacing */
+.section {
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+/* ================================================================== */
+/* Typography                                                           */
+/* ================================================================== */
+
+/* Gradient text — accent to lighter accent */
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    var(--accent-light) 0%,
+    #a78bfa 60%,
+    var(--accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================== */
+/* Components                                                           */
+/* ================================================================== */
+
+/* ── Card surface ── */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* ── Skill / tag badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background-color: var(--accent-muted);
+  color: var(--accent-light);
+  border: 1px solid var(--accent-border);
+  white-space: nowrap;
+}
+
+/* ── Accent button ── */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+.btn-accent:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(110, 95, 240, 0.35);
+}
+.btn-accent:active {
+  transform: translateY(0);
+}
+
+/* ── Ghost (outlined) button ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--bg-border);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-muted);
+  transform: translateY(-1px);
+}
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* ── Icon-only button (nav social icons) ── */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 0.4rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.btn-icon:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+  border-color: var(--bg-border);
+}
+
+/* ── Contact card ── */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+.contact-card:hover {
+  border-color: var(--accent) !important;
+  transform: translateY(-2px);
+}
+
+/* ── Footer social links ── */
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+.footer-social-link:hover {
+  color: var(--accent-light);
+}
+
+/* ── Nav link ── */
+.nav-link {
+  display: block;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+}
+.nav-link[aria-current="page"] {
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+/* ── Hero keyword pills ── */
+.hero-keyword {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.hero-keyword::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* ── Hero portrait frame ── */
+.portrait-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--bg-surface);
+}
+.portrait-frame::before {
+  /* Accent top-left corner accent line */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+  z-index: 2;
+  border-radius: 0 0 2px 0;
+}
+.portrait-frame::after {
+  /* Subtle inner border overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--bg-border);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Hero social links ── */
+.hero-social-link:hover {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-elevated);
+  border-color: var(--bg-border) !important;
+}
+
+/* ================================================================== */
+/* Hero Layout — Mobile first                                          */
+/* ================================================================== */
+
+/* Mobile: single column, text first then portrait */
+.hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.hero-text-col {
+  width: 100%;
+}
+
+.hero-portrait-col {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Desktop (≥ 860px): side-by-side, text left, portrait right */
+@media (min-width: 860px) {
+  .hero-grid {
+    flex-direction: row;
+    align-items: flex-start;  /* portrait top-aligns with first text line */
+    gap: 4rem;
+  }
+
+  .hero-text-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-portrait-col {
+    flex-shrink: 0;
+    width: auto;
+    justify-content: flex-end;
+  }
+
+  /* Give portrait more breathing room on desktop */
+  .portrait-wrapper {
+    width: clamp(240px, 22vw, 300px) !important;
+  }
+}
+
+/* ================================================================== */
+/* Navbar Responsive Visibility                                         */
+/* ================================================================== */
+
+/* Mobile default: hide desktop elements, show hamburger */
+.nav-desktop-links {
+  display: none !important;
+}
+
+.nav-desktop-social {
+  display: none !important;
+}
+
+.nav-mobile-toggle {
+  display: flex;
+}
+
+.mobile-social-btn {
+  flex: 1;
+  justify-content: center;
+  height: 2.5rem;
+}
+
+/* Desktop (≥ 860px): show full nav, hide hamburger */
+@media (min-width: 860px) {
+  .nav-desktop-links {
+    display: flex !important;
+  }
+
+  .nav-desktop-social {
+    display: flex !important;
+  }
+
+  .nav-mobile-toggle {
+    display: none !important;
+  }
+}
+
+/* ================================================================== */
+/* Framer Motion — respect prefers-reduced-motion                      */
+/* ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  [data-motion-reduce] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
