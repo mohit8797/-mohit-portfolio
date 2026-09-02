@@ -162,7 +162,7 @@ export default function ContactSection() {
             marginBottom: "3.5rem",
           }}
         >
-          // Always up to talk about AI, code, and ambitious products ✦
+          {"// Always up to talk about AI, code, and ambitious products ✦"}
         </motion.p>
 
         {/* ── Info Cards ── */}
