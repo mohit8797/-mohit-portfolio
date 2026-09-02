@@ -51,6 +51,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>

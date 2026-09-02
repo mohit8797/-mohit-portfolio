@@ -14,12 +14,23 @@ export interface SkillCategory {
   skills: string[];
 }
 
-/** A portfolio project */
+/** A single step in an engineering pipeline visualization */
+export interface ProjectPipelineStep {
+  step: string;
+  label: string;
+}
+
+/** A portfolio project definition */
 export interface Project {
   id: string;
+  number: string;
   title: string;
+  subtitle: string;
+  category: string;
   description: string;
-  tags: string[];
+  technologies: string[];
+  details: string[];
+  pipeline: ProjectPipelineStep[];
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;

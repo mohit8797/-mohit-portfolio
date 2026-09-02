@@ -13,8 +13,8 @@ export const SOCIAL_LINKS = {
   /** LeetCode profile */
   leetcode: "https://leetcode.com/u/mohit_redhu/",
 
-  /** Resume PDF — replace with your actual Google Drive / PDF link when ready */
-  resume: "#", // TODO: add your resume PDF link
+  /** Resume — Google Drive link */
+  resume: "https://drive.google.com/file/d/1OIsKNl-RdDkQk9Ahpn70zDSJjBfRx1HJ/view?usp=sharing",
 
   /** Contact email */
   email: "mohitredhu2005@gmail.com",

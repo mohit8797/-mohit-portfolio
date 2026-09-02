@@ -5,21 +5,22 @@
 /* ================================================================== */
 :root {
   /* Backgrounds */
-  --bg-primary:  #0c0c10;
-  --bg-surface:  #13131a;
-  --bg-elevated: #1a1a24;
-  --bg-border:   #252530;
+  --bg-primary:  #08080f;
+  --bg-surface:  #0f0f1a;
+  --bg-elevated: #171726;
+  --bg-border:   #22223a;
 
-  /* Accent — restrained indigo */
-  --accent:        #6e5ff0;
-  --accent-light:  #8b7ef8;
-  --accent-muted:  rgba(110, 95, 240, 0.12);
-  --accent-border: rgba(110, 95, 240, 0.3);
+  /* Accent - electric violet */
+  --accent:        #7c5cfc;
+  --accent-light:  #a78bfa;
+  --accent-glow:   #7c5cfc;
+  --accent-muted:  rgba(124, 92, 252, 0.13);
+  --accent-border: rgba(124, 92, 252, 0.35);
 
   /* Text */
-  --text-primary:   #eeedf8;
-  --text-secondary: #9896b0;
-  --text-muted:     #5c5a72;
+  --text-primary:   #f0effe;
+  --text-secondary: #9d9bb8;
+  --text-muted:     #5a5875;
   --text-accent:    var(--accent-light);
 
   /* Semantic aliases */
@@ -95,9 +96,9 @@ video {
 /* Constrained content container */
 .container-page {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1400px;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
 }
 
 /* Standard section vertical spacing */
@@ -109,7 +110,7 @@ video {
 /* Typography                                                           */
 /* ================================================================== */
 
-/* Gradient text — accent to lighter accent */
+/* Gradient text - accent to lighter accent */
 .gradient-text {
   background: linear-gradient(
     120deg,
@@ -126,7 +127,7 @@ video {
 /* Components                                                           */
 /* ================================================================== */
 
-/* ── Card surface ── */
+/* -- Card surface -- */
 .card {
   background-color: var(--bg-surface);
   border: 1px solid var(--bg-border);
@@ -134,7 +135,7 @@ video {
   padding: 1.5rem;
 }
 
-/* ── Skill / tag badge ── */
+/* -- Skill / tag badge -- */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -149,7 +150,7 @@ video {
   white-space: nowrap;
 }
 
-/* ── Accent button ── */
+/* -- Accent button -- */
 .btn-accent {
   display: inline-flex;
   align-items: center;
@@ -176,7 +177,7 @@ video {
   transform: translateY(0);
 }
 
-/* ── Ghost (outlined) button ── */
+/* -- Ghost (outlined) button -- */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -203,7 +204,22 @@ video {
   transform: translateY(0);
 }
 
-/* ── Icon-only button (nav social icons) ── */
+/* -- Hero solid white button ("My Work") -- */
+.btn-solid-white:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+.btn-solid-white:active {
+  transform: translateY(0);
+}
+
+/* -- Hero outline ghost button ("Download Resume") -- */
+.btn-outline-ghost:hover {
+  border-color: var(--accent-border);
+  color: var(--accent-light);
+}
+
+/* -- Icon-only button (nav social icons) -- */
 .btn-icon {
   display: inline-flex;
   align-items: center;
@@ -224,7 +240,7 @@ video {
   border-color: var(--bg-border);
 }
 
-/* ── Contact card ── */
+/* -- Contact card -- */
 .contact-card {
   display: flex;
   flex-direction: column;
@@ -237,7 +253,7 @@ video {
   transform: translateY(-2px);
 }
 
-/* ── Footer social links ── */
+/* -- Footer social links -- */
 .footer-social-link {
   display: flex;
   align-items: center;
@@ -248,7 +264,7 @@ video {
   color: var(--accent-light);
 }
 
-/* ── Nav link ── */
+/* -- Nav link -- */
 .nav-link {
   display: block;
   padding: 0.35rem 0.65rem;
@@ -269,7 +285,7 @@ video {
   font-weight: 500;
 }
 
-/* ── Hero keyword pills ── */
+/* -- Hero keyword pills -- */
 .hero-keyword {
   display: inline-flex;
   align-items: center;
@@ -288,7 +304,7 @@ video {
   background-color: var(--accent);
 }
 
-/* ── Hero portrait frame ── */
+/* -- Hero portrait frame -- */
 .portrait-frame {
   position: relative;
   border-radius: 12px;
@@ -318,7 +334,7 @@ video {
   z-index: 2;
 }
 
-/* ── Hero social links ── */
+/* -- Hero social links -- */
 .hero-social-link:hover {
   color: var(--text-primary) !important;
   background-color: var(--bg-elevated);
@@ -326,7 +342,438 @@ video {
 }
 
 /* ================================================================== */
-/* Hero Layout — Mobile first                                          */
+/* Editorial Technical Utilities                                        */
+/* ================================================================== */
+
+/* Technical Grid Background Pattern */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Ambient Radial Glow Overlay */
+.ambient-glow {
+  background: radial-gradient(
+    circle at 75% 20%,
+    rgba(110, 95, 240, 0.08) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* Watermark background text */
+.watermark-text {
+  font-size: clamp(5rem, 16vw, 13rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Pulsating live status indicator */
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  display: inline-block;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Technical Badge Tag */
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--bg-border);
+  letter-spacing: 0.03em;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.tech-tag:hover {
+  border-color: var(--accent-border);
+  color: var(--text-primary);
+}
+
+/* Editorial Technical Frame for Portrait */
+.editorial-frame {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--bg-border);
+  background-color: var(--bg-surface);
+}
+
+.editorial-frame-ticks::before,
+.editorial-frame-ticks::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--accent-light);
+  border-style: solid;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.editorial-frame-ticks::before {
+  top: 8px;
+  left: 8px;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.editorial-frame-ticks::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* ================================================================== */
+/* Projects - Mac-window Card Grid (Featured Work)                     */
+/* ================================================================== */
+
+/* 1-col mobile, 2-col desktop */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card hover: subtle lift + accent border */
+.project-mac-card:hover {
+  border-color: var(--accent-border) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(110, 95, 240, 0.1);
+}
+
+/* ================================================================== */
+/* Journey - Vertical alternating timeline                             */
+/* ================================================================== */
+
+.timeline-container {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2.5rem; /* mobile: indent right of left line */
+}
+
+/* Vertical accent line */
+.timeline-line {
+  position: absolute;
+  left: 0.65rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent-light) 10%,
+    var(--accent-light) 90%,
+    transparent 100%
+  );
+}
+
+/* Each entry row */
+.timeline-row {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Accent dot on the line */
+.timeline-dot {
+  position: absolute;
+  left: -2.5rem; /* align to left line */
+  top: 1.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  border: 2px solid var(--bg-primary);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+/* Card */
+.timeline-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+.timeline-card:hover {
+  border-color: var(--accent-border);
+}
+
+/* Invisible spacer - hidden on mobile */
+.timeline-spacer {
+  display: none;
+}
+
+/* -- Desktop: center line, alternating cards -- */
+@media (min-width: 860px) {
+  .timeline-container {
+    padding: 0.5rem 0; /* no left indent needed */
+  }
+
+  /* Center the vertical line */
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Row becomes a flex row; default = card on right */
+  .timeline-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* Dot sits exactly on center line */
+  .timeline-dot {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1.6rem;
+  }
+
+  /* Card occupies ~44% of width (gap from line included) */
+  .timeline-card {
+    width: calc(50% - 2.5rem);
+    flex-shrink: 0;
+  }
+
+  /* Right card: spacer left, card right */
+  .timeline-row--right .timeline-card {
+    order: 2;
+    margin-left: 2.5rem;
+  }
+  .timeline-row--right .timeline-spacer {
+    order: 1;
+  }
+
+  /* Left card: card left, spacer right */
+  .timeline-row--left .timeline-card {
+    order: 1;
+    margin-right: 2.5rem;
+  }
+  .timeline-row--left .timeline-spacer {
+    order: 2;
+  }
+
+  /* Show spacer on desktop */
+  .timeline-spacer {
+    display: block;
+    width: calc(50% - 2.5rem);
+    flex-shrink: 0;
+  }
+}
+
+/* ================================================================== */
+/* Tech Stack - Icon grid                                              */
+/* ================================================================== */
+
+/* 1-col mobile, 2-col at sm, 3-col at lg */
+.techstack-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 560px) {
+  .techstack-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .techstack-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Category box -- taller, more spacious */
+.techstack-category {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.techstack-category:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(124, 92, 252, 0.08);
+}
+
+/* Icon tiles grid -- auto-fill larger tiles */
+.techstack-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Single icon + label tile -- bigger padding and icons */
+.tech-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--bg-border);
+  border-radius: 12px;
+  padding: 1rem 0.5rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  cursor: default;
+  min-height: 90px;
+}
+.tech-tile:hover {
+  background-color: var(--accent-muted);
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(124, 92, 252, 0.12);
+}
+
+/* Platform link buttons in DSA section */
+.platform-link:hover {
+  border-color: var(--accent-border) !important;
+  background-color: var(--accent-muted) !important;
+}
+
+/* Portrait floating animation */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.portrait-wrapper {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+/* ================================================================== */
+/* Problem Solving - Stats card                                        */
+/* ================================================================== */
+
+/* Full-width card, side-by-side on desktop */
+.dsa-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 860px;
+}
+
+@media (min-width: 640px) {
+  .dsa-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .dsa-left {
+    flex: 0 0 auto;
+    width: 260px;
+  }
+
+  .dsa-right {
+    flex: 1;
+  }
+}
+
+/* ================================================================== */
+/* Contact - Lets Build CTA Section                                    */
+/* ================================================================== */
+
+.contact-section {
+  border-top: 1px solid var(--bg-border);
+}
+
+/* Info cards: 1-col -> 3-col */
+.contact-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 540px) {
+  .contact-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 860px) {
+  .contact-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Each info card */
+.contact-info-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem 1.3rem;
+  transition: border-color 0.2s ease;
+}
+.contact-info-card:hover {
+  border-color: var(--accent-border);
+}
+
+/* Animated circular social icons */
+.contact-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.contact-social-icon:hover {
+  color: var(--accent-light);
+  border-color: var(--accent-border);
+  background-color: var(--accent-muted);
+  box-shadow: 0 0 20px rgba(124, 92, 252, 0.25);
+}
+
+/* ================================================================== */
+/* Hero Layout - Mobile first                                          */
 /* ================================================================== */
 
 /* Mobile: single column, text first then portrait */
@@ -347,28 +794,30 @@ video {
   width: 100%;
 }
 
-/* Desktop (≥ 860px): side-by-side, text left, portrait right */
+/* Desktop (>= 860px): side-by-side, text left, portrait right */
 @media (min-width: 860px) {
   .hero-grid {
     flex-direction: row;
-    align-items: flex-start;  /* portrait top-aligns with first text line */
-    gap: 4rem;
+    align-items: flex-start;
+    gap: 2rem;            /* tighter gap = portrait moves left */
   }
 
   .hero-text-col {
-    flex: 1;
+    flex: 1.1;            /* slightly more weight to text */
     min-width: 0;
   }
 
   .hero-portrait-col {
-    flex-shrink: 0;
+    flex: 0 0 auto;
     width: auto;
-    justify-content: flex-end;
+    justify-content: flex-start; /* anchor portrait to LEFT of its column */
+    padding-left: 0;
   }
 
-  /* Give portrait more breathing room on desktop */
+  /* Portrait width on desktop */
   .portrait-wrapper {
-    width: clamp(240px, 22vw, 300px) !important;
+    width: clamp(300px, 30vw, 430px) !important;
+    margin-right: auto !important;
   }
 }
 
@@ -395,7 +844,7 @@ video {
   height: 2.5rem;
 }
 
-/* Desktop (≥ 860px): show full nav, hide hamburger */
+/* Desktop (>= 860px): show full nav, hide hamburger */
 @media (min-width: 860px) {
   .nav-desktop-links {
     display: flex !important;
@@ -411,7 +860,42 @@ video {
 }
 
 /* ================================================================== */
-/* Framer Motion — respect prefers-reduced-motion                      */
+/* About Section Layout                                                */
+/* ================================================================== */
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-bio-col {
+  width: 100%;
+}
+
+.about-cards-col {
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .about-grid {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3.5rem;
+  }
+
+  .about-bio-col {
+    flex: 1.1;
+    min-width: 0;
+  }
+
+  .about-cards-col {
+    flex: 0.9;
+    min-width: 0;
+  }
+}
+
+/* ================================================================== */
+/* Framer Motion - respect prefers-reduced-motion                      */
 /* ================================================================== */
 @media (prefers-reduced-motion: reduce) {
   [data-motion-reduce] {

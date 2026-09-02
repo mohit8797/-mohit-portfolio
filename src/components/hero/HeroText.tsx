@@ -2,15 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
-import { HERO_KEYWORDS } from "@/lib/constants";
+import { FileText } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/social";
 import { slideUp, fadeIn } from "./HeroSection";
-import HeroSocials from "./HeroSocials";
-
-// ---------------------------------------------------------------------------
-// HeroText — name, title, description, keywords, CTAs, social links
-// ---------------------------------------------------------------------------
 
 interface HeroTextProps {
   shouldReduce: boolean;
@@ -25,121 +19,148 @@ export default function HeroText({ shouldReduce }: HeroTextProps) {
       style={{
         display: "flex",
         flexDirection: "column",
-        maxWidth: "580px",
+        justifyContent: "center",
+        height: "100%",
       }}
     >
       {/* Eyebrow */}
       <motion.p
         {...anim(slideUp, 0)}
         style={{
-          fontSize: "0.75rem",
-          fontWeight: 600,
-          letterSpacing: "0.12em",
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.18em",
           textTransform: "uppercase",
           color: "var(--accent-light)",
-          marginBottom: "1.1rem",
+          marginBottom: "1.75rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
         }}
       >
-        B.Tech CSE &middot; Bennett University &middot; 2023–Present
+        <span className="pulse-dot" aria-hidden="true" />
+        NOT ANOTHER DEV PORTFOLIO
       </motion.p>
 
-      {/* Name */}
+      {/* Massive display name — single line, fills column */}
       <motion.h1
-        {...anim(slideUp, 0.08)}
+        {...anim(slideUp, 0.07)}
         style={{
-          fontSize: "clamp(2.5rem, 5.5vw, 4rem)",
-          fontWeight: 800,
-          letterSpacing: "-0.04em",
-          lineHeight: 1.06,
-          marginBottom: "0.5rem",
+          fontSize: "clamp(4rem, 9vw, 7.5rem)",
+          fontWeight: 900,
+          letterSpacing: "-0.05em",
+          lineHeight: 0.92,
+          marginBottom: "1.75rem",
           color: "var(--text-primary)",
         }}
       >
-        Mohit Redhu
+        Mohit Redhu.
       </motion.h1>
 
-      {/* Role */}
+      {/* Tagline — large + readable */}
       <motion.p
-        {...anim(slideUp, 0.15)}
+        {...anim(slideUp, 0.14)}
         style={{
-          fontSize: "clamp(1rem, 2.2vw, 1.2rem)",
-          fontWeight: 400,
-          color: "var(--text-secondary)",
-          marginBottom: "1.5rem",
+          fontSize: "clamp(1.15rem, 2.2vw, 1.5rem)",
+          fontWeight: 500,
+          color: "var(--text-primary)",
           lineHeight: 1.4,
+          marginBottom: "1.1rem",
+          letterSpacing: "-0.015em",
+          maxWidth: "22ch",
         }}
       >
-        AI/ML Engineer &amp;{" "}
-        <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
-          Full-Stack Developer
-        </span>
+        I build AI systems that feel precise and real.
       </motion.p>
 
-      {/* Description */}
+      {/* Bio */}
       <motion.p
-        {...anim(slideUp, 0.22)}
+        {...anim(slideUp, 0.2)}
         style={{
-          fontSize: "0.975rem",
+          fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
           color: "var(--text-secondary)",
           lineHeight: 1.75,
-          marginBottom: "1.75rem",
-          maxWidth: "52ch",
+          marginBottom: "2rem",
+          maxWidth: "46ch",
         }}
       >
-        I build AI-powered applications and full-stack products that solve
-        practical problems — from AutoML pipelines and RAG systems to
-        production web platforms.
+        B.Tech CSE student at Bennett University. I like AI-heavy products,
+        RAG architectures, and engineering work that holds up under pressure.
       </motion.p>
 
-      {/* Keyword pills */}
+      {/* Badge pills */}
       <motion.div
-        {...anim(fadeIn, 0.3)}
+        {...anim(fadeIn, 0.27)}
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "0.75rem",
+          gap: "0.5rem",
           marginBottom: "2.25rem",
-          alignItems: "center",
         }}
       >
-        {HERO_KEYWORDS.map((kw) => (
-          <span key={kw} className="hero-keyword">
-            {kw}
-          </span>
+        {["8.89 CGPA", "400+ DSA Problems", "AI/ML + Full-Stack"].map((tag) => (
+          <span key={tag} className="tech-tag">{tag}</span>
         ))}
       </motion.div>
 
       {/* CTA buttons */}
       <motion.div
-        {...anim(slideUp, 0.36)}
+        {...anim(slideUp, 0.34)}
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "0.75rem",
-          marginBottom: "2rem",
+          gap: "0.85rem",
           alignItems: "center",
         }}
       >
-        <Link href="/projects" className="btn-accent">
-          View Projects
-          <ArrowRight size={15} aria-hidden="true" />
+        {/* White solid — "My Work" */}
+        <Link
+          href="/#projects"
+          className="btn-solid-white"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.8rem 1.75rem",
+            borderRadius: "9999px",
+            backgroundColor: "var(--text-primary)",
+            color: "var(--bg-primary)",
+            fontWeight: 700,
+            fontSize: "0.95rem",
+            letterSpacing: "-0.01em",
+            textDecoration: "none",
+            flexShrink: 0,
+          }}
+        >
+          My Work
         </Link>
 
+        {/* Ghost outlined — "Download Resume" */}
         <a
           href={SOCIAL_LINKS.resume}
           target={SOCIAL_LINKS.resume !== "#" ? "_blank" : undefined}
           rel="noopener noreferrer"
-          className="btn-ghost"
+          className="btn-outline-ghost"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.78rem 1.6rem",
+            borderRadius: "9999px",
+            backgroundColor: "transparent",
+            color: "var(--text-primary)",
+            fontWeight: 600,
+            fontSize: "0.95rem",
+            letterSpacing: "-0.01em",
+            textDecoration: "none",
+            border: "1.5px solid var(--bg-border)",
+            flexShrink: 0,
+          }}
           aria-label="Download resume"
         >
-          <Download size={15} aria-hidden="true" />
-          Resume
+          <FileText size={16} aria-hidden="true" />
+          Download Resume
         </a>
-      </motion.div>
-
-      {/* Social links */}
-      <motion.div {...anim(fadeIn, 0.42)}>
-        <HeroSocials />
       </motion.div>
     </div>
   );

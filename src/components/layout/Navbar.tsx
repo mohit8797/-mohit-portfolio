@@ -42,8 +42,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <header
@@ -77,16 +80,16 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "0.4rem",
+            gap: "0.35rem",
             textDecoration: "none",
             flexShrink: 0,
           }}
         >
-          <span style={{ fontSize: "1rem", fontWeight: 700, letterSpacing: "-0.03em", color: "var(--text-primary)" }}>
-            MR
+          <span style={{ fontSize: "0.875rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-primary)" }}>
+            MOHIT REDHU
           </span>
           <span
-            style={{ width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "var(--accent)", flexShrink: 0 }}
+            style={{ width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "var(--accent-light)", flexShrink: 0 }}
             aria-hidden="true"
           />
         </Link>
