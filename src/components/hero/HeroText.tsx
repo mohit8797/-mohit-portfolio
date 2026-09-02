@@ -138,7 +138,7 @@ export default function HeroText({ shouldReduce }: HeroTextProps) {
         {/* Ghost outlined — "Download Resume" */}
         <a
           href={SOCIAL_LINKS.resume}
-          target={SOCIAL_LINKS.resume !== "#" ? "_blank" : undefined}
+          target="_blank"
           rel="noopener noreferrer"
           className="btn-outline-ghost"
           style={{
