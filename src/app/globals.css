@@ -62,8 +62,9 @@
 
 html {
   scroll-behavior: smooth;
-  /* Offset anchor scrolling by nav height */
   scroll-padding-top: var(--nav-height);
+  /* Prevent any element from causing horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 /* Respect user's motion preference */
@@ -81,6 +82,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 img,

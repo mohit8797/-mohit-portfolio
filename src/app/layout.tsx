@@ -1,13 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SITE_METADATA } from "@/lib/constants";
 
-// ---------------------------------------------------------------------------
-// Font — Inter from Google Fonts, exposed as a CSS variable
-// ---------------------------------------------------------------------------
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -15,7 +12,18 @@ const inter = Inter({
 });
 
 // ---------------------------------------------------------------------------
-// Root metadata (Next.js 14+ Metadata API)
+// Viewport — MUST be exported separately in Next.js App Router.
+// This is the ONLY correct way to set the mobile viewport in Next.js 13+.
+// A manual <meta> tag in <head> is ignored/overridden by Next.js.
+// ---------------------------------------------------------------------------
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+// ---------------------------------------------------------------------------
+// Root metadata
 // ---------------------------------------------------------------------------
 export const metadata: Metadata = {
   title: {
@@ -41,9 +49,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// Root layout — wraps every page with Navbar and Footer
-// ---------------------------------------------------------------------------
 export default function RootLayout({
   children,
 }: {
@@ -52,7 +57,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
