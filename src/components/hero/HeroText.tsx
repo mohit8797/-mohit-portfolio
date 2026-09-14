@@ -42,32 +42,31 @@ export default function HeroText({ shouldReduce }: HeroTextProps) {
         NOT ANOTHER DEV PORTFOLIO
       </motion.p>
 
-      {/* Massive display name — single line, fills column */}
+      {/* Massive display name */}
       <motion.h1
         {...anim(slideUp, 0.07)}
         style={{
-          fontSize: "clamp(4rem, 9vw, 7.5rem)",
+          fontSize: "clamp(2.4rem, 9vw, 7.5rem)",
           fontWeight: 900,
-          letterSpacing: "-0.05em",
-          lineHeight: 0.92,
-          marginBottom: "1.75rem",
+          letterSpacing: "-0.04em",
+          lineHeight: 0.95,
+          marginBottom: "1.25rem",
           color: "var(--text-primary)",
         }}
       >
         Mohit Redhu.
       </motion.h1>
 
-      {/* Tagline — large + readable */}
+      {/* Tagline */}
       <motion.p
         {...anim(slideUp, 0.14)}
         style={{
-          fontSize: "clamp(1.15rem, 2.2vw, 1.5rem)",
+          fontSize: "clamp(1.05rem, 2.2vw, 1.4rem)",
           fontWeight: 500,
           color: "var(--text-primary)",
-          lineHeight: 1.4,
-          marginBottom: "1.1rem",
-          letterSpacing: "-0.015em",
-          maxWidth: "22ch",
+          lineHeight: 1.45,
+          marginBottom: "0.9rem",
+          letterSpacing: "-0.01em",
         }}
       >
         I build AI systems that feel precise and real.

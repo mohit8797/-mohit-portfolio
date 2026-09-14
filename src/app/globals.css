@@ -98,12 +98,12 @@ video {
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5vw, 4rem);
+  padding-inline: clamp(1rem, 5vw, 4rem);
 }
 
 /* Standard section vertical spacing */
 .section {
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-block: clamp(3rem, 8vw, 6rem);
 }
 
 /* ================================================================== */
@@ -780,7 +780,7 @@ video {
 .hero-grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .hero-text-col {
