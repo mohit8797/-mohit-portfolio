@@ -32,8 +32,7 @@ export default function HeroSection() {
       style={{
         position: "relative",
         overflow: "hidden",
-        /* Full viewport minus nav -- ensures it fills the screen */
-        minHeight: "calc(100svh - var(--nav-height))",
+        minHeight: "calc(100vh - var(--nav-height))",
         display: "flex",
         alignItems: "center",
       }}

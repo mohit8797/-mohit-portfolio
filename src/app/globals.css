@@ -367,7 +367,7 @@ video {
 
 /* Watermark background text */
 .watermark-text {
-  font-size: clamp(5rem, 16vw, 13rem);
+  font-size: clamp(3rem, 16vw, 13rem);
   font-weight: 900;
   line-height: 0.85;
   letter-spacing: -0.06em;
@@ -375,6 +375,10 @@ video {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
   user-select: none;
   pointer-events: none;
+  /* Prevent it from expanding scroll area on iOS Safari */
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 /* Pulsating live status indicator */
