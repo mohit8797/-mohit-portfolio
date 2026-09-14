@@ -99,7 +99,8 @@ export default function ContactSection() {
           top: "10%",
           left: "50%",
           transform: "translateX(-50%)",
-          width: "600px",
+          width: "min(600px, 90vw)",
+          maxWidth: "100%",
           height: "400px",
           background: "radial-gradient(ellipse, rgba(124,92,252,0.15) 0%, transparent 70%)",
           pointerEvents: "none",
@@ -108,10 +109,10 @@ export default function ContactSection() {
       />
 
       <div className="container-page" style={{ position: "relative", zIndex: 1 }}>
-        {/* ── Main Heading ── */}
+        {/* ── Section Header ── */}
         <motion.div
           {...fadeUp(0)}
-          style={{ textAlign: "center", marginBottom: "0.75rem" }}
+          style={{ textAlign: "center", marginBottom: "clamp(2rem, 4vw, 3.5rem)" }}
         >
           {/* Accent top line — like the reference's green line */}
           <div
@@ -126,10 +127,10 @@ export default function ContactSection() {
 
           <h2
             style={{
-              fontSize: "clamp(3rem, 8vw, 6rem)",
+              fontSize: "clamp(2.1rem, 7.5vw, 6rem)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
-              lineHeight: 1,
+              lineHeight: 1.05,
               color: "var(--text-primary)",
               marginBottom: "0.1em",
             }}

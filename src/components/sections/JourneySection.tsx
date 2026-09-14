@@ -42,18 +42,23 @@ const TIMELINE = [
 export default function JourneySection() {
   const shouldReduce = useReducedMotion() ?? false;
 
-  const slideIn = (side: "left" | "right", delay: number) =>
+  const slideIn = (_side: "left" | "right", delay: number) =>
     shouldReduce
       ? {}
       : {
-          initial: { opacity: 0, x: side === "left" ? -28 : 28 },
-          whileInView: { opacity: 1, x: 0 },
-          viewport: { once: true, margin: "-60px" },
+          initial: { opacity: 0, y: 22 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-40px" },
           transition: { duration: 0.55, ease: EASE_OUT, delay },
         };
 
   return (
-    <section id="journey" className="section container-page" aria-label="Experience and Education">
+    <section
+      id="journey"
+      className="section container-page"
+      aria-label="Experience and Education"
+      style={{ overflow: "hidden" }}
+    >
       {/* ── Heading ── */}
       <motion.div
         initial={shouldReduce ? {} : { opacity: 0, y: 14 }}

@@ -13,9 +13,9 @@ export default function HeroPortrait() {
         display: "flex",
         flexDirection: "column",
         gap: "0.85rem",
-        width: "clamp(260px, 80vw, 460px)",
-        flexShrink: 0,
-        marginRight: "auto",
+        width: "100%",
+        maxWidth: "460px",
+        margin: "0 auto",
       }}
     >
       {/* Editorial Framed Container */}

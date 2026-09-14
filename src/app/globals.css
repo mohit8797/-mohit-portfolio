@@ -480,16 +480,17 @@ video {
 
 .timeline-container {
   position: relative;
-  padding: 0.5rem 0 0.5rem 2.5rem; /* mobile: indent right of left line */
+  padding: 0.5rem 0 0.5rem 2rem; /* mobile: indent right of left line */
 }
 
 /* Vertical accent line */
 .timeline-line {
   position: absolute;
-  left: 0.65rem;
+  left: 0.75rem;
+  transform: translateX(-50%);
   top: 0;
   bottom: 0;
-  width: 1px;
+  width: 2px;
   background: linear-gradient(
     to bottom,
     transparent 0%,
@@ -511,7 +512,8 @@ video {
 /* Accent dot on the line */
 .timeline-dot {
   position: absolute;
-  left: -2.5rem; /* align to left line */
+  left: -1.25rem; /* exactly aligns with left: 0.75rem line (2rem - 1.25rem = 0.75rem) */
+  transform: translateX(-50%);
   top: 1.35rem;
   width: 12px;
   height: 12px;
@@ -822,8 +824,9 @@ video {
 
   /* Portrait width on desktop */
   .portrait-wrapper {
-    width: clamp(300px, 30vw, 430px) !important;
+    max-width: clamp(300px, 30vw, 430px) !important;
     margin-right: auto !important;
+    flex-shrink: 0;
   }
 }
 
@@ -908,5 +911,120 @@ video {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+}
+
+/* ================================================================== */
+/* MOBILE RESPONSIVENESS - 320px to 430px                              */
+/* ================================================================== */
+
+/* ---- Small mobile: <=430px ---- */
+@media (max-width: 430px) {
+  /* Tighter container padding */
+  .container-page {
+    padding-inline: 1rem;
+  }
+
+  /* Reduce section spacing */
+  .section {
+    padding-block: 2.5rem;
+  }
+
+  /* Portrait: don't exceed available width */
+  .portrait-wrapper {
+    width: min(85vw, 300px) !important;
+    margin-inline: auto !important;
+    animation: none !important; /* disable float on mobile for perf */
+  }
+
+  /* Contact glow: constrain to viewport */
+  .contact-glow {
+    width: 100vw !important;
+    height: 250px !important;
+  }
+
+  /* Tech tiles: smaller min for narrow screens */
+  .techstack-tiles {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .tech-tile {
+    padding: 0.75rem 0.35rem;
+    min-height: 78px;
+  }
+
+  /* Tech category boxes */
+  .techstack-category {
+    padding: 1.1rem;
+  }
+
+  /* DSA card - stack content cleanly */
+  .dsa-card {
+    padding: 1.25rem;
+  }
+
+  /* Contact info cards */
+  .contact-info-card {
+    padding: 0.9rem 1rem 1.1rem;
+  }
+
+  /* Project cards - tighter padding */
+  .project-mac-card > div:last-child {
+    padding: 1rem 1rem 1.15rem !important;
+  }
+
+  /* Footer: center items on tiny screens */
+  footer .container-page > div {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  /* Timeline: less left padding */
+  .timeline-container {
+    padding-left: 2rem;
+  }
+  .timeline-dot {
+    left: -1.25rem;
+  }
+}
+
+/* ---- Very small mobile: <=359px ---- */
+@media (max-width: 359px) {
+  .container-page {
+    padding-inline: 0.75rem;
+  }
+
+  /* Even smaller portrait */
+  .portrait-wrapper {
+    width: min(90vw, 260px) !important;
+  }
+
+  /* Even smaller tiles */
+  .techstack-tiles {
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  }
+
+  .tech-tile {
+    padding: 0.6rem 0.25rem;
+    min-height: 68px;
+  }
+
+  /* Smaller contact social icons for tight fit */
+  .contact-social-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ---- Tablet: 768px-1023px ---- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Keep 2-col grids but with more breathing room */
+  .projects-grid {
+    gap: 1rem;
+  }
+
+  .techstack-grid {
+    gap: 1rem;
   }
 }

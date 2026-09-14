@@ -89,9 +89,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         }}
       >
         {/* Traffic lights + status + category */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", minWidth: 0, overflow: "hidden" }}>
           <WindowChrome />
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", minWidth: 0, overflow: "hidden" }}>
             <span
               style={{
                 fontSize: "0.65rem",
@@ -105,6 +105,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 border: `1px solid ${project.featured ? "var(--accent-border)" : "var(--bg-border)"}`,
                 padding: "0.15rem 0.45rem",
                 borderRadius: "3px",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               {statusLabel}
@@ -116,6 +118,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
                 color: "var(--text-muted)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               {project.category}
@@ -124,7 +129,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Action icons — GitHub + Live */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", flexShrink: 0 }}>
           {project.githubUrl ? (
             <a
               href={project.githubUrl}
